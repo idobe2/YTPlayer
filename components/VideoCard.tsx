@@ -7,7 +7,12 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useThemeColor } from "@/hooks/useThemeColor";
 
-const VideoList = ({
+/**
+ *
+ * @param video { id: string; thumbnail: string; title: string; description: string }
+ * @returns A card component that displays a video thumbnail, title, and description
+ */
+const VideoCard = ({
   video,
 }: {
   video: { id: string; thumbnail: string; title: string; description: string };
@@ -35,19 +40,19 @@ const VideoList = ({
     >
       <Card
         key={video.id}
-        className={`rounded-lg border border-gray-400 my-2`}
+        className={`rounded-lg border border-gray-400 dark:border-neutral-200 my-2`}
         style={{ elevation: 4, backgroundColor: backgroundColor }}
       >
         <Grid
           className="flex flex-row"
           _extra={{
-            className: "grid-cols-10",
+            className: "grid-cols-9",
           }}
         >
           <GridItem
             className="rounded-md"
             _extra={{
-              className: "col-span-4",
+              className: "col-span-3",
             }}
           >
             <Image source={video.thumbnail} size="xl" alt="thumbnail" />
@@ -82,4 +87,4 @@ const VideoList = ({
   );
 };
 
-export default VideoList;
+export default VideoCard;

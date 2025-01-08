@@ -37,35 +37,51 @@ const HomeDrawer: React.FC<HomeDrawerProps> = ({
       <DrawerContent>
         {/* Header */}
         <DrawerHeader>
-          <Heading size="3xl" className="py-4 mb-4">
-            Menu
-          </Heading>
+          <Box
+            onTouchStart={toggleColorMode}
+            className="flex flex-row items-center"
+          >
+            <Heading size="3xl" className="py-12 mr-12">
+              Menu
+            </Heading>
+            {colorMode === "light" ? (
+              <>
+                <Ionicons name="sunny-outline" size={28} color="black" />
+              </>
+            ) : (
+              <>
+                <Ionicons name="moon-outline" size={28} color="white" />
+              </>
+            )}
+          </Box>
         </DrawerHeader>
 
         {/* Body */}
         <DrawerBody>
-          <Box
-            onTouchStart={toggleColorMode}
-            className="flex flex-row items-center mb-4"
+        <Grid
+            className="w-full flex flex-row items-center justify-center pl-6"
+            _extra={{
+              className: "grid-cols-6",
+            }}
           >
-            {colorMode === "light" ? (
-              <>
-                <Ionicons name="sunny-outline" size={24} color="black" />
-              </>
-            ) : (
-              <>
-                <Ionicons name="moon-outline" size={24} color="white" />
-              </>
-            )}
-          </Box>
+            <GridItem
+              _extra={{ className: "col-span-6" }}
+            >
+            </GridItem>
+            <GridItem _extra={{ className: "col-span-3" }}>
+              
+            </GridItem>
+            <GridItem _extra={{ className: "col-span-3" }}>
+              </GridItem>
+              </Grid>
         </DrawerBody>
 
         {/* Footer */}
         <DrawerFooter>
           <Grid
-            className="w-full flex flex-row items-center justify-center pl-6"
+            className="w-full flex flex-row items-center justify-center"
             _extra={{
-              className: "grid-cols-6",
+              className: "grid-cols-8",
             }}
           >
             <GridItem

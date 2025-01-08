@@ -3,13 +3,17 @@ import { View } from "react-native";
 import VideoCard from "./VideoCard";
 import LoadingSpinner from "./LoadingSpinner";
 import { useVideoContext } from "@/contexts/VideoContext";
-import { Input, InputField, InputIcon, InputSlot } from "@/components/ui/input";
+import { Input, InputField, InputSlot } from "@/components/ui/input";
 import { Box } from "@/components/ui/box";
 import { Ionicons } from "@expo/vector-icons";
 import { useThemeColor } from "@/hooks/useThemeColor";
 
-const CHANNEL_ID = "UCW5YeuERMmlnqo4oq8vwUpg";
+const CHANNEL_ID = process.env.EXPO_PUBLIC_CHANNEL_ID;
 
+/**
+ *
+ * @returns List of videos fetched from the YouTube API
+ */
 const VideoList = () => {
   const backgroundColor = useThemeColor(
     { light: "#0a7ea4", dark: "#80DEEA" },
@@ -24,7 +28,7 @@ const VideoList = () => {
     try {
       const fetchedVideos = searchQuery
         ? await fetchVideos(searchQuery, 10)
-        : await fetchVideos(CHANNEL_ID, 5);
+        : await fetchVideos(CHANNEL_ID as string, 5);
       setVideos(fetchedVideos);
     } catch (error) {
       console.error("Error loading videos:", error);

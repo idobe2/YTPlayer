@@ -10,6 +10,8 @@ import HomeDrawer from "@/components/HomeDrawer";
 import { Ionicons } from "@expo/vector-icons";
 import { VideoProvider } from "@/contexts/VideoContext";
 import { useThemeColor } from "@/hooks/useThemeColor";
+import Toast from "react-native-toast-message";
+import toastConfig from "@/config/ToastConfig";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -67,7 +69,7 @@ export default function RootLayout() {
             options={{
               title: "",
               headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
+                backgroundColor,
               },
             }}
           />
@@ -81,6 +83,7 @@ export default function RootLayout() {
         colorMode={colorMode}
         setColorMode={setColorMode}
       />
+      <Toast config={toastConfig}/>
     </GluestackUIProvider>
   );
 }

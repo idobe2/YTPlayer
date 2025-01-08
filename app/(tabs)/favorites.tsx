@@ -12,7 +12,7 @@ export default function FavoritesScreen() {
   const { favorites } = useVideoContext();
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor }}>
+    <ScrollView className="flex-1 p-2" style={{ backgroundColor }}>
       {favorites.map((video) => (
         <VideoCard key={video.id} video={video} />
       ))}
