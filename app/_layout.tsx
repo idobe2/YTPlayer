@@ -1,24 +1,29 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { Stack } from "expo-router";
 import "@/global.css";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "expo-status-bar";
+import { useEffect, useState } from "react";
+import { Box } from "@/components/ui/box";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
-import "../global.css"
-
-import { useColorScheme } from '@/hooks/useColorScheme';
+import HomeDrawer from "@/components/HomeDrawer";
+import { Ionicons } from "@expo/vector-icons";
+import { VideoProvider } from "@/contexts/VideoContext";
+import { useThemeColor } from "@/hooks/useThemeColor";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  const [colorMode, setColorMode] = useState<"light" | "dark">("light");
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
+  const [showDrawer, setShowDrawer] = useState(false);
+  const backgroundColor = useThemeColor(
+    { light: "#E78895", dark: "#80DEEA" },
+    "background"
+  );
 
   useEffect(() => {
     if (loaded) {
@@ -31,12 +36,51 @@ export default function RootLayout() {
   }
 
   return (
-    <GluestackUIProvider mode="light"><ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <GluestackUIProvider mode={colorMode}>
+      <VideoProvider>
         <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="(tabs)"
+            options={{
+              headerShown: true,
+              title: "YTPlayer",
+              headerStyle: {
+                backgroundColor: backgroundColor,
+              },
+              headerTitleStyle: {
+                fontFamily: "SpaceMono",
+              },
+              headerTintColor: colorMode === "light" ? "#000" : "#fff",
+              headerLeft: () => (
+                <Box onTouchStart={() => setShowDrawer(true)}>
+                  <Ionicons
+                    name="menu"
+                    size={32}
+                    color={colorMode === "light" ? "#000" : "#fff"}
+                  />
+                </Box>
+              ),
+            }}
+          />
+          <Stack.Screen
+            name="VideoDetails"
+            options={{
+              title: "",
+              headerStyle: {
+                backgroundColor: colorMode === "light" ? "#fff" : "#000",
+              },
+            }}
+          />
           <Stack.Screen name="+not-found" />
         </Stack>
-        <StatusBar style="auto" />
-      </ThemeProvider></GluestackUIProvider>
+      </VideoProvider>
+      <StatusBar style="auto" />
+      <HomeDrawer
+        isOpen={showDrawer}
+        onClose={() => setShowDrawer(false)}
+        colorMode={colorMode}
+        setColorMode={setColorMode}
+      />
+    </GluestackUIProvider>
   );
 }
