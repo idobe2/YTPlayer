@@ -1,16 +1,18 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 import { Card } from "@/components/ui/card";
-import { Grid, GridItem } from "@/components/ui/grid";
+// import { Grid, GridItem } from "@/components/ui/grid";
+import { HStack } from "@/components/ui/hstack";
+import { Box } from "@/components/ui/box";
 import { Image } from "@/components/ui/image";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useThemeColor } from "@/hooks/useThemeColor";
 
 /**
- *
+ * A card component that displays a video thumbnail, title, and description
  * @param video { id: string; thumbnail: string; title: string; description: string }
- * @returns A card component that displays a video thumbnail, title, and description
+ * @returns Video card
  */
 const VideoCard = ({
   video,
@@ -43,45 +45,25 @@ const VideoCard = ({
         className={`rounded-lg border border-gray-400 dark:border-neutral-200 my-2`}
         style={{ elevation: 4, backgroundColor: backgroundColor }}
       >
-        <Grid
-          className="flex flex-row"
-          _extra={{
-            className: "grid-cols-9",
-          }}
-        >
-          <GridItem
-            className="rounded-md"
-            _extra={{
-              className: "col-span-3",
-            }}
-          >
+        <HStack space="md" reversed={false}>
+          <Box>
             <Image source={video.thumbnail} size="xl" alt="thumbnail" />
-          </GridItem>
+          </Box>
 
-          <GridItem
-            className="rounded-md"
-            _extra={{
-              className: "col-span-5",
-            }}
-          >
+          <Box className="w-3/5">
             <Text className="text-lg font-medium dark:text-gray-200">
               {video.title}
             </Text>
-          </GridItem>
+          </Box>
 
-          <GridItem
-            className="rounded-md items-center justify-center"
-            _extra={{
-              className: "col-span-1",
-            }}
-          >
+          <Box className="w-1/5 justify-center">
             <Ionicons
               name="chevron-forward-outline"
               size={24}
               color={textColor}
             ></Ionicons>
-          </GridItem>
-        </Grid>
+          </Box>
+        </HStack>
       </Card>
     </TouchableOpacity>
   );

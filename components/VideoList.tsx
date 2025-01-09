@@ -11,8 +11,8 @@ import { useThemeColor } from "@/hooks/useThemeColor";
 const CHANNEL_ID = process.env.EXPO_PUBLIC_CHANNEL_ID;
 
 /**
- *
- * @returns List of videos fetched from the YouTube API
+ * A Component that displays a list of videos
+ * @returns Video list
  */
 const VideoList = () => {
   const backgroundColor = useThemeColor(
@@ -67,7 +67,7 @@ const VideoList = () => {
           <Ionicons name="search" size={24} color={backgroundColor} />
         </Box>
       </View>
-      <View className="py-4">
+      <View className="py-4 mb-12">
         {videos.map((video) => (
           <VideoCard key={video.id} video={video} />
         ))}

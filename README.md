@@ -1,50 +1,46 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+# YTPlayer App
 
-## Get started
+This is a simple React Native application built with Expo, featuring video fetching, theme management (dark and light modes), and the ability to add videos to favorites. The app integrates the YouTube API to fetch and display videos. It also features a clean and modern UI powered by Gluestack.
 
-1. Install dependencies
+## Features
 
+- **Video List**: Fetch videos from a specific channel or search query.
+- **Favorites Management**: Add videos to favorites and persist data using AsyncStorage.
+- **Theme Support**: Toggle between light and dark modes.
+- **Clean UI**: Styled using Gluestack components for a modern look.
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/idobe2/YTPlayer.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd YouTubePlayerApp
+   ```
+3. Install dependencies:
    ```bash
    npm install
    ```
-
-2. Start the app
-
+4. Start the development server:
    ```bash
-    npx expo start
+   npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## Usage
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Search for videos using the search bar.
+- Tap on a video to view its details.
+- Add or remove videos from your favorites.
+- Change the theme from the drawer menu.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Dependencies
 
-## Get a fresh project
+- **Expo**
+- **React Native**
+- **@react-native-async-storage/async-storage**
+- **react-native-youtube-iframe**
+- **Gluestack UI**
 
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.

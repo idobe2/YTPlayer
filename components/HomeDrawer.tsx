@@ -10,7 +10,8 @@ import {
 import { Heading } from "@/components/ui/heading";
 import { Ionicons } from "@expo/vector-icons";
 import { Box } from "@/components/ui/box";
-import { Grid, GridItem } from "@/components/ui/grid";
+import { VStack } from "@/components/ui/vstack";
+import { HStack } from "./ui/hstack";
 import { ExternalLink } from "./ExternalLink";
 import { Text } from "@/components/ui/text";
 
@@ -21,6 +22,14 @@ interface HomeDrawerProps {
   setColorMode: React.Dispatch<React.SetStateAction<"light" | "dark">>;
 }
 
+/**
+ * Home drawer component with menu items
+ * @param isOpen {boolean} Drawer open state
+ * @param onClose {() => void} Drawer close handler
+ * @param colorMode {string} Current color mode
+ * @param setColorMode {React.Dispatch<React.SetStateAction<string>>} Color mode setter
+ * @returns Home drawer
+ */
 const HomeDrawer: React.FC<HomeDrawerProps> = ({
   isOpen,
   onClose,
@@ -58,57 +67,46 @@ const HomeDrawer: React.FC<HomeDrawerProps> = ({
 
         {/* Body */}
         <DrawerBody>
-        <Grid
+          {/*Coming soon*/}
+          {/* <Grid
             className="w-full flex flex-row items-center justify-center pl-6"
             _extra={{
               className: "grid-cols-6",
             }}
           >
-            <GridItem
-              _extra={{ className: "col-span-6" }}
-            >
-            </GridItem>
-            <GridItem _extra={{ className: "col-span-3" }}>
-              
-            </GridItem>
-            <GridItem _extra={{ className: "col-span-3" }}>
-              </GridItem>
-              </Grid>
+            <GridItem _extra={{ className: "col-span-6" }}></GridItem>
+            <GridItem _extra={{ className: "col-span-3" }}></GridItem>
+            <GridItem _extra={{ className: "col-span-3" }}></GridItem>
+          </Grid> */}
         </DrawerBody>
 
         {/* Footer */}
         <DrawerFooter>
-          <Grid
-            className="w-full flex flex-row items-center justify-center"
-            _extra={{
-              className: "grid-cols-8",
-            }}
-          >
-            <GridItem
-              className="py-4 pr-10"
-              _extra={{ className: "col-span-6" }}
-            >
+          <Box className="justify-center h-40 w-full">
+            <VStack space="md" reversed={false}>
               <Text className="text-center">About me</Text>
-            </GridItem>
-            <GridItem _extra={{ className: "col-span-3" }}>
-              <ExternalLink href="https://www.linkedin.com/in/idobn/">
-                <Ionicons
-                  name="logo-linkedin"
-                  size={32}
-                  color={colorMode === "light" ? "black" : "white"}
-                ></Ionicons>
-              </ExternalLink>
-            </GridItem>
-            <GridItem _extra={{ className: "col-span-3" }}>
-              <ExternalLink href="https://github.com/idobe2">
-                <Ionicons
-                  name="logo-github"
-                  size={32}
-                  color={colorMode === "light" ? "black" : "white"}
-                ></Ionicons>
-              </ExternalLink>
-            </GridItem>
-          </Grid>
+              <HStack space="md" reversed={false} className="justify-center">
+                <Box>
+                  <ExternalLink href="https://www.linkedin.com/in/idobn/">
+                    <Ionicons
+                      name="logo-linkedin"
+                      size={32}
+                      color={colorMode === "light" ? "black" : "white"}
+                    ></Ionicons>
+                  </ExternalLink>
+                </Box>
+                <Box>
+                  <ExternalLink href="https://github.com/idobe2">
+                    <Ionicons
+                      name="logo-github"
+                      size={32}
+                      color={colorMode === "light" ? "black" : "white"}
+                    ></Ionicons>
+                  </ExternalLink>
+                </Box>
+              </HStack>
+            </VStack>
+          </Box>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

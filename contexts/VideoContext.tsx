@@ -21,6 +21,11 @@ const FAVORITES_STORAGE_KEY = "favorites";
 
 const VideoContext = createContext<VideoContextType | undefined>(undefined);
 
+/**
+ * A provider component that wraps the app and provides video-related functionality
+ * @param children React children elements
+ * @returns Video provider component
+ */
 export const VideoProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {

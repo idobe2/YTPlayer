@@ -3,7 +3,7 @@ import axios from "axios";
 const API_KEY = process.env.EXPO_PUBLIC_API_KEY;
 const BASE_URL = process.env.EXPO_PUBLIC_BASE_URL;
 
-// Fetch video details (including full description)
+// Fetch full video details
 const fetchVideoDetails = async (videoId: string) => {
   try {
     const response = await axios.get(`${BASE_URL}/videos`, {

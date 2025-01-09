@@ -53,6 +53,7 @@ export default function RootLayout() {
                 fontFamily: "SpaceMono",
               },
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
+              keyboardHandlingEnabled: false,
               headerLeft: () => (
                 <Box onTouchStart={() => setShowDrawer(true)}>
                   <Ionicons
@@ -83,7 +84,7 @@ export default function RootLayout() {
         colorMode={colorMode}
         setColorMode={setColorMode}
       />
-      <Toast config={toastConfig}/>
+      <Toast config={toastConfig} />
     </GluestackUIProvider>
   );
 }
