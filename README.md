@@ -1,7 +1,7 @@
 
 # YTPlayer App
 
-This is a simple React Native application built with Expo, featuring video fetching, theme management (dark and light modes), and the ability to add videos to favorites. The app integrates the YouTube API to fetch and display videos. It also features a clean and modern UI powered by Gluestack.
+This is a React Native application built with Expo, featuring video fetching, theme management (dark and light modes), and the ability to add videos to favorites. The app integrates the YouTube API to fetch and display videos. It also features a clean and modern UI powered by Gluestack.
 
 ## Features
 
@@ -18,7 +18,7 @@ This is a simple React Native application built with Expo, featuring video fetch
    ```
 2. Navigate to the project directory:
    ```bash
-   cd YouTubePlayerApp
+   cd YTPlayer
    ```
 3. Install dependencies:
    ```bash
@@ -43,4 +43,17 @@ This is a simple React Native application built with Expo, featuring video fetch
 - **@react-native-async-storage/async-storage**
 - **react-native-youtube-iframe**
 - **Gluestack UI**
+
+## Additional Features
+
+- **Responsive Design**: Ensures the UI works well on both small and large screen devices.
+- **Pull-to-Refresh:** Reload the video list by swiping down on the home screen.
+- **Custom Toast Notifications:** Displays feedback messagesusing a clean toast notification system.
+
+## Future Improvements
+
+- **Search History**: Add functionality to track and manage previous searches.
+- **Playlists**: Allow users to create and manage custom playlists.
+- **Custom player**: Employ a custom video player for enhanced flexibility.
+
 
